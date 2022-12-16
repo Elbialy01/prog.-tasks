@@ -16,7 +16,7 @@ namespace ConsoleApp12
             new course(){name="control",code=1321,grade=130 }
             };
             student mahmoud = new student(12,"mahmoud","male", courses);
-            mahmoud.display(courses);
+            Console.WriteLine(mahmoud[1021]);
         }
     }
   public  struct student
@@ -32,11 +32,24 @@ namespace ConsoleApp12
             id = _id;
             name = _name;
             gender = _gender;   
-            courses = _courses;
-           
+            courses = _courses; 
+            
+        }
 
-            
-            
+        public string  this[int _code]
+        {
+
+            get
+            {
+                for(int i = 0; i < courses.Length; i++)
+                {
+                    if (courses[i].code == _code)
+                    {
+                        return $"{courses[i].name} grades {courses[i].grade}";
+                    }
+                }
+                return "invalid code";
+            }
         }
     public void display(course[] courses)
         {
